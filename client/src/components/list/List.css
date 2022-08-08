@@ -1,0 +1,27 @@
+.travel-list li {
+  margin: 30px auto;
+  border: 1px solid #f2f2f2;
+  box-shadow: 3px 3px 5px rgba(50, 50, 50, 0.1);
+  padding: 20px;
+  display: block;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border-left: 4px solid #20a4f3;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.travel-list button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #fff;
+  color: #ef476f;
+  border: none;
+  padding: 12px 8px;
+  text-align: center;
+  line-height: 0;
+  font-size: 1.5em;
+  cursor: pointer;
+}
