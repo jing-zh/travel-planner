@@ -3,24 +3,29 @@ body {
   font-family: "Roboto", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #d5d4d4;
-  max-width: 650px;
+  background-color: #fff;
+  /* max-width: 1200px; */
   margin: 0 auto;
-  padding: 0 16px;
 
   min-height: 100vh;
-  display: grid;
-  place-content: center;
-}
-
-.App {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  row-gap: 80px;
+  /* display: grid;
+  place-content: center; */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.pages {
+  max-width: 1400px;
+  padding: 20px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.home {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 100px;
 }

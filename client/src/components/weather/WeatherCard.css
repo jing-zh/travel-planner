@@ -1,0 +1,122 @@
+.weather-card {
+  margin: 20px 5px;
+  background: radial-gradient(#88b804, #79a303);
+  border-radius: 20px;
+  position: relative;
+  width: 270px;
+  height: 300px;
+  overflow: hidden;
+  box-shadow: 0px 0px 25px 1px rgba(60, 82, 2, 0.3);
+  -webkit-animation: appear 500ms ease-out forwards;
+  animation: appear 500ms ease-out forwards;
+}
+
+.weather-card:nth-child(2n) {
+  margin-top: 100px;
+  margin-left: 50px;
+}
+
+.weather-card h1 {
+  position: absolute;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-size: 55px;
+  color: white;
+  bottom: 100px;
+  left: 45px;
+  opacity: 0;
+  transform: translateX(150px);
+  -webkit-animation: title-appear 500ms ease-out 500ms forwards;
+  animation: title-appear 500ms ease-out 500ms forwards;
+}
+
+.weather-card h2 {
+  position: absolute;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-size: 50px;
+  color: #ededed;
+  bottom: 30px;
+  left: 95px;
+  opacity: 0;
+  transform: translateX(150px);
+  -webkit-animation: title-appear 500ms ease-out 500ms forwards;
+  animation: title-appear 500ms ease-out 500ms forwards;
+}
+
+.weather-card p {
+  position: absolute;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-size: 28px;
+  color: #ccc;
+  left: 35px;
+  margin-bottom: 15px;
+  -webkit-animation: title-appear 1s ease-out 500ms forwards;
+  animation: title-appear 1s ease-out 500ms forwards;
+}
+
+.wth {
+  bottom: 10px;
+}
+
+#weather-icon {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  top: 0;
+  float: right;
+  margin: 40px 40px 0 0;
+  -webkit-animation: weather-icon-move 5s ease-in-out infinite;
+  animation: weather-icon-move 5s ease-in-out infinite;
+}
+
+@-webkit-keyframes appear {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  75% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes appear {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  75% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes title-appear {
+  from {
+    opacity: 0;
+    transform: translateX(150px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+@keyframes title-appear {
+  from {
+    opacity: 0;
+    transform: translateX(150px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}

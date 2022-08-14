@@ -6,6 +6,7 @@ form {
   max-width: 500px;
   width: 60vw;
   border: 2px solid #f6efa6;
+  margin: 45px auto;
 }
 
 input {
