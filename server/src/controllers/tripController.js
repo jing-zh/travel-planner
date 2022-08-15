@@ -33,6 +33,7 @@ const getTrip = async (req, res) => {
 const createTrip = async (req, res) => {
   const { destination, departureTime, notes } = req.body;
   const { lon, lat } = await geoCoding(destination);
+
   //add doc to db
   try {
     const trip = await Trip.create({

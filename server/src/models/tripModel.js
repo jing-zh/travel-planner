@@ -10,7 +10,6 @@ const tripSchema = new Schema(
     },
     departureTime: {
       type: Date,
-      required: true,
     },
     lon: Number,
     lat: Number,
