@@ -1,26 +1,33 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useAuthContext } from "../../hooks/useAuthContext";
 //styles
 import WeatherCard from "../../components/weather/WeatherCard";
 import "./Detail.css";
 
 export default function Detail() {
+  const { user } = useAuthContext();
   const [detail, setDetail] = useState({});
   const { id } = useParams();
 
   useEffect(() => {
     const getDetail = async () => {
       try {
-        const res = await axios.get(`/trips/${id}`);
+        const res = await axios.get(`/trips/${id}`, {
+          headers: {
+            Authorization: `Bearer ${user.data.token}`,
+          },
+        });
         setDetail(res.data);
       } catch (error) {
         console.log(error);
       }
     };
-
-    getDetail();
-  }, [id]);
+    if (user) {
+      getDetail();
+    }
+  }, [id, user]);
 
   return (
     <>

@@ -4,9 +4,8 @@ const mongoose = require("mongoose");
 
 //get all trips
 const getTrips = async (req, res) => {
-  const { destination } = req.body;
-
-  const trips = await Trip.find({}).sort({ createdAt: -1 });
+  const user_id = req.user._id;
+  const trips = await Trip.find({ user_id }).sort({ createdAt: -1 });
 
   res.status(200).json(trips);
 };
@@ -32,16 +31,18 @@ const getTrip = async (req, res) => {
 //create a new trip
 const createTrip = async (req, res) => {
   const { destination, departureTime, notes } = req.body;
-  const { lon, lat } = await geoCoding(destination);
 
   //add doc to db
   try {
+    const user_id = req.user._id;
+    const { lon, lat } = await geoCoding(destination);
     const trip = await Trip.create({
       destination,
       departureTime,
       lon,
       lat,
       notes,
+      user_id,
     });
 
     res.status(200).json(trip);

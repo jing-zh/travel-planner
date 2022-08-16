@@ -9,11 +9,44 @@ header .container {
   padding: 10px 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  margin: 0 auto;
+}
+
+header .nav-create {
+  margin-left: 16px;
+  margin-right: auto;
 }
 
 header a {
   color: #fff;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 26px;
+}
+
+header .wrapper {
+  display: flex;
+  /* background-color: red; */
+  justify-content: space-around;
+  padding: 0 20px;
+  align-items: center;
+}
+
+header .wrapper a {
+  margin-left: 16px;
+}
+
+header .wrapper .username {
+  margin-right: 16px;
+  font-weight: bold;
+  color: #5c5c5c;
+}
+
+header button {
+  background: #ffed66;
+  color: #707070;
+  border: 2px solid #ffed66;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 1em;
 }

@@ -1,0 +1,22 @@
+.signup,
+.login {
+  padding: 70px 40px;
+}
+
+.signup label,
+.login label {
+  margin: 0 auto 40px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+}
+
+.signup button,
+.login button {
+  width: 100px;
+  margin: 0 auto;
+  display: block;
+  transition: all 0.3s ease-in-out 0s;
+}

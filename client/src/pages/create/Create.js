@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useTripsContext } from "../../hooks/useTripsContext";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 //styles
 import "./Create.css";
 
 export default function Create() {
+  const { user } = useAuthContext();
   const { dispatch } = useTripsContext();
-  const navigate = useNavigate();
   const [destination, setDestination] = useState("");
   const [departureTime, setDepartureTime] = useState("");
   const [notes, setNotes] = useState("");
@@ -17,16 +17,24 @@ export default function Create() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!user) {
+      setError("您需要先登录");
+      return;
+    }
+
     try {
       const trip = { destination, departureTime, notes };
-      const res = await axios.post("/trips/", trip);
+      const res = await axios.post("/trips/", trip, {
+        headers: {
+          Authorization: `Bearer ${user.data.token}`,
+        },
+      });
       setDestination("");
       setDepartureTime("");
       setNotes("");
       setError(null);
       dispatch({ type: "CREATE_TRIP", payload: res.data });
 
-      navigate("/");
       console.log(res.data, "data added to mongodb");
     } catch (error) {
       setError(error);

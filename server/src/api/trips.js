@@ -7,7 +7,12 @@ const {
   updateTrip,
 } = require("../controllers/tripController");
 
+const requireAuth = require("../middleware/requireAuth");
+
 const router = express.Router();
+
+//require auth for all trip routes
+router.use(requireAuth);
 
 //get all trips
 router.get("/", getTrips);

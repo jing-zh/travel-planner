@@ -3,16 +3,25 @@ import { Link } from "react-router-dom";
 import { useTripsContext } from "../../hooks/useTripsContext";
 import moment from "moment";
 import "moment/locale/zh-cn";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 //styles
 import "./List.css";
 moment.locale("zh-cn");
 
 export default function List({ trip }) {
+  const { user } = useAuthContext();
   const { dispatch } = useTripsContext();
   const handleClick = async (e) => {
+    if (!user) {
+      return;
+    }
     try {
-      const res = await axios.delete("/trips/" + trip._id);
+      const res = await axios.delete("/trips/" + trip._id, {
+        headers: {
+          Authorization: `Bearer ${user.data.token}`,
+        },
+      });
       dispatch({ type: "DELETE_TRIP", payload: res.data });
       console.log(res, "deleted successfully");
     } catch (error) {
