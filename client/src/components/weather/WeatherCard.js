@@ -3,7 +3,7 @@ import "./WeatherCard.css";
 
 import React from "react";
 
-export default function WeatherCard({ detail }) {
+export default function WeatherCard({ detail, weather }) {
   // const [weatherData, setWeatherData] = useState({});
   // const key = process.env.REACT_APP_OPENWEATHER_KEY;
 
@@ -25,11 +25,15 @@ export default function WeatherCard({ detail }) {
   return (
     <>
       <div className='weather-card'>
-        <div id='weather-icon'>icon</div>
-        <h1>{detail.destination}</h1>
-        {/* <p>{weatherData}</p> */}
-        {/* <h2>{weatherData.main.temp}º</h2>
-          <p className='wth'>{weatherData.weather[0].description}</p> */}
+        <div className='weather-main'>
+          <h2>{detail.destination}</h2>
+          <h1>{weather.main.temp}º</h1>
+        </div>
+        <div className='weather-desc'>
+          <p>{weather.weather[0].description}</p>
+          <p>体感温度：{weather.main.feels_like}º</p>
+          <p>湿度：{weather.main.humidity}%</p>
+        </div>
       </div>
     </>
   );
