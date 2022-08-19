@@ -1,29 +1,28 @@
 .weather-card {
   margin: 20px 5px;
-  background: radial-gradient(#88b804, #79a303);
+  background: #fff;
   border-radius: 20px;
-  position: relative;
-  width: 270px;
+  max-width: 600px;
   height: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
   overflow: hidden;
-  box-shadow: 0px 0px 25px 1px rgba(60, 82, 2, 0.3);
+  box-shadow: 0px 0px 25px 1px rgba(60, 82, 2, 0.1);
   -webkit-animation: appear 500ms ease-out forwards;
   animation: appear 500ms ease-out forwards;
 }
 
-.weather-card:nth-child(2n) {
-  margin-top: 100px;
-  margin-left: 50px;
+.weather-main {
+  text-align: center;
 }
-
 .weather-card h1 {
-  position: absolute;
   font-family: "Lato", sans-serif;
   font-weight: 300;
   font-size: 55px;
-  color: white;
-  bottom: 100px;
-  left: 45px;
+  color: #707070;
+  border-bottom: 3px solid #f5e663;
   opacity: 0;
   transform: translateX(150px);
   -webkit-animation: title-appear 500ms ease-out 500ms forwards;
@@ -31,44 +30,26 @@
 }
 
 .weather-card h2 {
-  position: absolute;
+  margin-bottom: -30px;
   font-family: "Lato", sans-serif;
   font-weight: 300;
-  font-size: 50px;
-  color: #ededed;
-  bottom: 30px;
-  left: 95px;
+  font-size: 45px;
+  color: #858585;
   opacity: 0;
   transform: translateX(150px);
   -webkit-animation: title-appear 500ms ease-out 500ms forwards;
   animation: title-appear 500ms ease-out 500ms forwards;
 }
 
-.weather-card p {
-  position: absolute;
+.weather-desc p {
   font-family: "Lato", sans-serif;
   font-weight: 300;
-  font-size: 28px;
-  color: #ccc;
-  left: 35px;
-  margin-bottom: 15px;
+  font-size: 20px;
+  color: #333;
+  background-color: #f5e663;
+  padding: 0 60px;
   -webkit-animation: title-appear 1s ease-out 500ms forwards;
   animation: title-appear 1s ease-out 500ms forwards;
-}
-
-.wth {
-  bottom: 10px;
-}
-
-#weather-icon {
-  position: relative;
-  width: 50px;
-  height: 50px;
-  top: 0;
-  float: right;
-  margin: 40px 40px 0 0;
-  -webkit-animation: weather-icon-move 5s ease-in-out infinite;
-  animation: weather-icon-move 5s ease-in-out infinite;
 }
 
 @-webkit-keyframes appear {

@@ -1,7 +1,7 @@
 const Trip = require("../models/tripModel");
 const geoCoding = require("../utils/geocoding");
 const mongoose = require("mongoose");
-
+const axios = require("axios");
 //get all trips
 const getTrips = async (req, res) => {
   const user_id = req.user._id;
@@ -20,12 +20,19 @@ const getTrip = async (req, res) => {
   }
 
   const trip = await Trip.findById(id);
+  const { lat, lon } = await geoCoding(trip.destination);
+
+  const weather = await axios.get(
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=f35ac24472fbfc2e065e7cb84fef7846&units=metric&lang=zh_cn`
+  );
+
+  const weatherData = weather.data;
 
   if (!trip) {
     return res.status(404).json({ error: "No such trip" });
   }
 
-  res.status(200).json(trip);
+  res.status(200).json({ trip, weatherData });
 };
 
 //create a new trip
@@ -35,12 +42,9 @@ const createTrip = async (req, res) => {
   //add doc to db
   try {
     const user_id = req.user._id;
-    const { lon, lat } = await geoCoding(destination);
     const trip = await Trip.create({
       destination,
       departureTime,
-      lon,
-      lat,
       notes,
       user_id,
     });
