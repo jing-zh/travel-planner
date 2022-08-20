@@ -1,3 +1,4 @@
+require("dotenv").config();
 const Trip = require("../models/tripModel");
 const geoCoding = require("../utils/geocoding");
 const mongoose = require("mongoose");
@@ -23,7 +24,7 @@ const getTrip = async (req, res) => {
   const { lat, lon } = await geoCoding(trip.destination);
 
   const weather = await axios.get(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=f35ac24472fbfc2e065e7cb84fef7846&units=metric&lang=zh_cn`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.OPENWEATHER_KEY}6&units=metric&lang=zh_cn`
   );
 
   const weatherData = weather.data;
